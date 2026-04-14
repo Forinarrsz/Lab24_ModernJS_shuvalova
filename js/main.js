@@ -341,28 +341,76 @@ function delay(ms) {
 // }
 // getUserById(1);
 
-async function createPost() {
-  try {
-    const newPost = {
-      title: "first post",
-      body: "first text sirst text first text",
-      userId: 1,
-    };
+// async function createPost() {
+//   try {
+//     const newPost = {
+//       title: "first post",
+//       body: "first text sirst text first text",
+//       userId: 1,
+//     };
 
-    const response = await fetch("", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newPost),
-    });
+//     const response = await fetch("", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(newPost),
+//     });
 
-    const createdPost = await response.json();
-    console.log("create new post");
-    console.log(createdPost.id);
-    console.log(createdPost.title);
-  } catch (error) {
-    console.log(error.message);
-  }
-}
-createPost();
+//     const createdPost = await response.json();
+//     console.log("create new post");
+//     console.log(createdPost.id);
+//     console.log(createdPost.title);
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// }
+// createPost();
+
+// console.log("optional chaining");
+
+// const user1 = {
+//   name: "Leon",
+//   address: {
+//     city: "Raccon-city",
+//     street: "Raccon police department",
+//   },
+// };
+// const user2 = {
+//   name: "Claire Redfield",
+// };
+
+// const city1 = user2.address && user2.address.city;
+// console.log("City (old):", city1);
+
+// const city2 = user2.address?.city;
+// console.log("city (new):", city2);
+// const street = user1.address.street;
+// console.log("street:", street);
+
+// const admin = {
+//   name: "admin",
+//   permissions: {
+//     canDelete: () => true,
+//   },
+// };
+
+// const guest = {
+//   name: "Guest",
+// };
+
+// console.log("can admin delete?", admin.permissions?.canDelete.apply?.());
+// console.log("can guest delete?", guest.permissions?.canDelete.apply?.());
+
+// const company = {
+//   name: "tech corp",
+//   employess: [
+//     {name: "Anna", role: "developer"},
+//     {name: "Bella", role: "data scientist"},
+//   ],
+// };
+// const startup = {
+//   name: "new startup",
+// }
+// console.log("first", company.employess?.[0]?.name);
+// console.log("first startup", startup.employess?.[0]?.name);
