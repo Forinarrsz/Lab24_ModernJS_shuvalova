@@ -274,35 +274,95 @@ function delay(ms) {
 // }
 // getData();
 
-async function cookDinner() {
-  console.log("stat cooking");
+// async function cookDinner() {
+//   console.log("stat cooking");
 
-  const pasta = await Delay(1000).then(() => "pasta complete");
-  console.log(pasta);
-
-  
-  const souse = await Delay(500).then(() => "souse complete");
-  console.log(souse);
+//   const pasta = await Delay(1000).then(() => "pasta complete");
+//   console.log(pasta);
 
   
-  const salad = await Delay(700).then(() => "salad complete");
-  console.log(salad);
-  console.log("Pasta is ready");
+//   const souse = await Delay(500).then(() => "souse complete");
+//   console.log(souse);
 
+  
+//   const salad = await Delay(700).then(() => "salad complete");
+//   console.log(salad);
+//   console.log("Pasta is ready");
+
+// }
+// cookDinner().then((result) => console.log(result));
+
+// async function cookDinnerFast() {
+//   console.log("Готовим всё одновременно");
+
+//   const [pasta, souse, salad] = await Promise.all([
+//     delay(1000).then(() => "pasta is ready"),
+//     delay(500).then(() => "souse is ready"),
+//     delay(700).then(() => "salad is ready"),
+
+//   ]);
+//   console.log(pasta, souse, salad);
+//   return "ужин готов быстрее";
+// }
+// cookDinnerFast().then((result) => console.log(result));
+// //no practice 10.3
+
+// console.log("fetch API");
+
+// async function getUsers() {
+//   try {
+//     const response = await fetch ("https://jsonplaceholder.typicode.com/users");
+
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! Status: ${response.status}`);
+//     }
+//     const users = await response.json();
+//     console.log("3 users:");
+//     users.slice(0,3).array.forEach((user) => {
+//       console.log(`- ${user.name} (${user.email})`)
+//     });
+//   } catch (error) {
+//     console.log("loading error", error.message);
+//   }
+// }
+// getUsers();
+
+// async function getUserById(id) {
+//   try {
+//     const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+//     const user = await response.json();
+//     console.log(id);
+//     console.log(user.name);
+//     console.log(user.address.city);
+//     console.log(user.company.name);
+//   } catch (error) {
+//     console.log("error:", error.message);
+//   }
+// }
+// getUserById(1);
+
+async function createPost() {
+  try {
+    const newPost = {
+      title: "first post",
+      body: "first text sirst text first text",
+      userId: 1,
+    };
+
+    const response = await fetch("", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newPost),
+    });
+
+    const createdPost = await response.json();
+    console.log("create new post");
+    console.log(createdPost.id);
+    console.log(createdPost.title);
+  } catch (error) {
+    console.log(error.message);
+  }
 }
-cookDinner().then((result) => console.log(result));
-
-async function cookDinnerFast() {
-  console.log("Готовим всё одновременно");
-
-  const [pasta, souse, salad] = await Promise.all([
-    delay(1000).then(() => "pasta is ready"),
-    delay(500).then(() => "souse is ready"),
-    delay(700).then(() => "salad is ready"),
-
-  ]);
-  console.log(pasta, souse, salad);
-  return "ужин готов быстрее";
-}
-cookDinnerFast().then((result) => console.log(result));
-//no practice 10.3
+createPost();
