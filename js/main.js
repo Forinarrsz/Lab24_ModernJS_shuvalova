@@ -109,21 +109,39 @@ const user = {
 // console.log("second:", second);
 // console.log("rest:", rest);
 
-const mas1 = [834,276,537];
-const mas2 = [334,543,466];
-const massives = [...mas1, ...mas2];
-function findMax(...numbers) {
-  return Math.max(...numbers);
-}
-console.log(findMax(23,343453,3454));
+// const mas1 = [834,276,537];
+// const mas2 = [334,543,466];
+// const massives = [...mas1, ...mas2];
+// function findMax(...numbers) {
+//   return Math.max(...numbers);
+// }
+// console.log(findMax(23,343453,3454));
 
-const obj1 = {
-  name: "Leon",
-  lastName: "Kennedy",
-};
-const obj2 = {
-  age: 21,
-  city: "raccon city",
-};
-const objects = {...obj1, ...obj2};
-console.log(objects);
+// const obj1 = {
+//   name: "Leon",
+//   lastName: "Kennedy",
+// };
+// const obj2 = {
+//   age: 21,
+//   city: "raccon city",
+// };
+// const objects = {...obj1, ...obj2};
+// console.log(objects);
+
+// import { greet, add, PI } from "./utils";
+// console.log("Modules:");
+// console.log(greet("Leon"));
+// console.log("5+3=", add(5,3));
+// console.log(PI);
+
+// import { multiply as умножить } from "./utils";
+// console.log("4*7=", умножить(4,7));
+
+// import * as Utils from "./utils.js";
+// console.log(Utils.greet("Scott"));
+// console.log("Умножение:", Utils.multiply(3,9));
+
+import { cube, square, E } from "./math.js";
+console.log("cube:",cube(3));
+console.log("square:",square(3));
+console.log("const:",E);
