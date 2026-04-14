@@ -141,7 +141,87 @@ const user = {
 // console.log(Utils.greet("Scott"));
 // console.log("Умножение:", Utils.multiply(3,9));
 
-import { cube, square, E } from "./math.js";
-console.log("cube:",cube(3));
-console.log("square:",square(3));
-console.log("const:",E);
+// import { cube, square, E } from "./math.js";
+// console.log("cube:",cube(3));
+// console.log("square:",square(3));
+// console.log("const:",E);
+
+// console.log("promises");
+// const simplePromise = new Promise((resolve, reject) => {
+//   const success = true;
+//   if (success) {
+//     resolve("great!");
+//   } else {
+//     reject("error");
+//   }
+// });
+// simplePromise
+// .then((result) => console.log("result:", result))
+// .catch((error) => console.log("Error:", error));
+
+// function delay(ms) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve(`прошло ${ms} миллисекунд`);
+//     }, ms);
+//   });
+// }
+// delay(1000)
+// .then((message) => console.log(message));
+
+function fetchUserData(userId) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+        if(userId > 0) {
+          resolve({
+            id: userId,
+            name: "van Ivanov",
+            email: "abc@mail.com",
+          });
+        } else {reject("error");}
+    }, 1500);
+  })
+}
+fetchUserData(1) 
+.then((user) => console.log("user:", user))
+.catch((error) => console.log("error:", error));
+
+function step1() {
+  return new Promise((resolve) => {
+    setTimeout(() =>resolve(`шаг 1 завершен`), 500);
+  });
+}
+
+function step2(previousRes) {
+  return new Promise((resolve) => {
+    setTimeout(() =>resolve(`${previousRes} -> шаг 2 завершен`), 500);
+  });
+}
+
+function step2(previousRes) {
+  return new Promise((resolve) => {
+    setTimeout(() =>resolve(`${previousRes} -> шаг 3 завершен`), 500);
+  });
+}
+
+step1()
+.then((result1) => step2(result1))
+.then((result2) => step3(result2))
+.then((finalRes) => console.log("final Res", finalRes))
+.catch((error) => console.log("ошибка в цепочке", error));
+
+function checkInventory(produc, inStock) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (inStock) {
+        resolve(`товар в наличии`);
+      } else {
+          reject(`Товара нет на складе`);
+      }
+    },1000);
+  })
+}
+
+checkInventory("phone", true)
+.then((message) => console.log(message))
+.catch(error => console.error(error));
