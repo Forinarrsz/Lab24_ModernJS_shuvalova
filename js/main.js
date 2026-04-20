@@ -414,3 +414,94 @@ function delay(ms) {
 // }
 // console.log("first", company.employess?.[0]?.name);
 // console.log("first startup", startup.employess?.[0]?.name);
+
+console.log("Nullish Coalescing");
+const value1 = 0;
+const value2 = "";
+const value3 = false;
+const value4 = null;
+const value5 = undefined;
+
+console.log('value1 || "default":', value1 || "default");
+console.log('value2 || "default":', value2 || "default"); 
+console.log('value3 || "default":', value3 || "default"); 
+
+
+console.log('value1 ?? "default":', value1 ?? "default"); 
+console.log('value2 ?? "default":', value2 ?? "default"); 
+console.log('value3 ?? "default":', value3 ?? "default"); 
+console.log('value4 ?? "default":', value4 ?? "default"); 
+console.log('value5 ?? "default":', value5 ?? "default"); 
+
+function displayUserSettings(settings) {
+
+  const theme = settings?.theme ?? "light";
+  const fontSize = settings?.fontSize ?? 14;
+  const notifications = settings?.notifications ?? true;
+
+  console.log("Настройки пользователя:");
+  console.log("Тема:", theme);
+  console.log("Размер шрифта:", fontSize);
+  console.log("Уведомления:", notifications);
+}
+
+displayUserSettings({ theme: "dark", fontSize: 18 });
+displayUserSettings({ notifications: false }); 
+displayUserSettings({}); 
+
+const apiResponse = {
+  data: {
+    user: {
+      profile: {
+        settings: {
+          language: "ru",
+        },
+      },
+    },
+  },
+};
+
+const language = apiResponse?.data?.user?.profile?.settings?.language ?? "en";
+console.log("Язык:", language);
+
+const emptyResponse = {};
+const defaultLanguage = emptyResponse?.data?.user?.profile?.settings?.language ?? "en";
+console.log("Язык по умолчанию:", defaultLanguage); 
+
+//practice
+const order = {
+  id: 101,
+  customer: {
+    name: "Алексей",
+    email: "alex@example.com"
+  },
+  shipping: {
+    address: "ул. Пушкина, д. 10",
+    city: "Москва"
+   
+  },
+  payment: {
+    method: "Card",
+    amount: 2500
+  }
+};
+
+function displayOrder(orderData) {
+
+  const customerName = orderData?.customer?.name ?? "Анонимный покупатель";
+  const shippingCity = orderData?.shipping?.city ?? "Город не указан";
+  const zipCode = orderData?.shipping?.zipCode ?? "Индекс отсутствует";
+  const totalAmount = orderData?.payment?.amount ?? 0;
+
+
+  console.log(`Клиент: ${customerName}`);
+  console.log(`Доставка в: ${shippingCity} (${zipCode})`);
+  console.log(`Сумма к оплате: ${totalAmount} руб.`);
+
+}
+
+
+displayOrder(order);
+
+
+displayOrder({});
