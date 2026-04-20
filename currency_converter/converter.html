@@ -7,7 +7,22 @@
     <link rel = "stylesheet" href="converter.css"/>
 </head>
 <body>
-    
+    <div class="converter">
+        <h2>Конвертер валют (RUB)</h2>
+        
+        <input type="number" id="amount" placeholder="Введите сумму">
+        
+        <select id="currency">
+            <option value="USD">USD (Доллар)</option>
+            <option value="EUR">EUR (Евро)</option>
+            <option value="GBP">GBP (Фунт)</option>
+        </select>
+
+        <button id="convertBtn">Конвертировать</button>
+
+        <div id="result" class="result"></div>
+    </div>
+
 
     <script type="module" src="../currency_converter/converter.js"></script>
 </body>
